@@ -4,6 +4,7 @@ module hello_aptos_chain::message_tests {
     use std::unit_test;
     use std::vector;
     use std::string;
+    use aptos_std::debug::print;
 
     use hello_aptos_chain::message;
 
@@ -16,6 +17,7 @@ module hello_aptos_chain::message_tests {
         let account = get_account();
         let addr = signer::address_of(&account);
         aptos_framework::account::create_account_for_test(addr);
+        print(&addr);
         message::set_message(account,  string::utf8(b"Hello, Blockchain"));
 
         assert!(
